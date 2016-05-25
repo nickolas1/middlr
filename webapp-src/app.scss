@@ -2,87 +2,15 @@
 
 // bootstrap customization and main file
 @import './_variables.scss';
-@import './resources/bootswatch/_variables.scss';
+// @import './resources/bootswatch/_variables.scss';
 @import '../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-@import './resources/bootswatch/_bootswatch.scss';
-
-// our modules
-@import './tabs/_tabs.scss';
-@import './filters/_filters.scss';
-@import './upload-components/_upload-components.scss';
-@import './editable-table/_editable-table.scss';
-@import './editable-table/attachment-modal/_attachment-modal.scss';
-@import './map/_map.scss';
-@import './results/_results.scss';
-@import './upload/_upload.scss';
+// @import './resources/bootswatch/_bootswatch.scss';
 
 // app-wide tweaks
-.fill-height { 
-    height: 100%;
-}
-
-.container-fluid {
-    height: 100%;
-    width: 100%;
-    display: table;
-}
-
 html {
     height: 100%;
 }
 body {
     min-height: 100%;
     overflow-x: hidden;
-}
-
-// fontello path fix and transformations
-@font-face {
-    font-family: 'fontello';
-    src: url('./fonts/fontello.eot?8788516');
-    src: url('./fonts/fontello.eot?8788516#iefix') format('embedded-opentype'),
-        url('./fonts/fontello.woff?8788516') format('woff'),
-        url('./fonts/fontello.ttf?8788516') format('truetype'),
-        url('./fonts/fontello.svg?8788516#fontello') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-.icon-mirrored:before {
-    transform: scale(-1, 1);
-    -webkit-transform: scale(-1, 1);
-}
-.icon-rotate-90:before {
-    transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
-}
-.icon-mirrored-rotate-90:before {
-    transform: scale(-1, 1) rotate(-90deg);
-}
-.icon-1-5x {
-    font-size: 1.5em;
-}
-.icon-1-75x {
-    font-size: 1.75em;
-}
-.icon-2x {
-    font-size: 2em;
-}
-.icon-3x {
-    font-size: 3em;
-}
-.icon-outline {
-    border: 2px solid;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-.icon-outlined {
-    font-size: 1.2em;
-}
-
-table[ng-table] > .td {
-    width: 100px !important;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }

@@ -9,7 +9,7 @@ var argv = require('yargs').argv;
 const PROD = (argv.production ? true : false);
 const VERSION = (argv.projectversion ? argv.projectversion : 'no version');
 
-// define paths 
+// define paths
 var paths = {
     build: {
         main: './webapp',
@@ -30,7 +30,7 @@ var paths = {
         './webapp-src/**/*.json'
     ],
     index: [
-        './webapp-src/index.html'  
+        './webapp-src/index.html'
     ],
     static: [
         './webapp-src/**/*.csv',
@@ -145,7 +145,7 @@ gulp.task('compile-js', function() {
         }))
         .pipe(g.jspm.buildStatic(entryPath, targetPath, builderConfig))
 //        .pipe(g.gzip())
-        .pipe(gulp.dest('.'))
+        .pipe(gulp.dest(paths.build.main))
         .pipe(g.if(!PROD, g.livereload()));
 });
 
@@ -162,8 +162,8 @@ gulp.task('make-version', function() {
 });
 
 // main build task: copy all files, compile sass, compile js, concat vendor stuff
-gulp.task('build', g.sequence('clean', 
-                              'copy-static', 
+gulp.task('build', g.sequence('clean',
+                              'copy-static',
                               'copy-src',
                               'make-version',
                               ['compile-js',
