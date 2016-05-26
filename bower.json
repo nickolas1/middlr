@@ -19,7 +19,8 @@
     "Leaflet.label": "git://github.com/Leaflet/Leaflet.label#master",
     "angular-smart-table": "^2.1.7",
     "angular-xeditable": "^0.1.10",
-    "angular-mocks": "^1.5.3"
+    "angular-mocks": "^1.5.3",
+    "ngmap": "^1.17.3"
   },
   "devDependencies": {},
   "resolutions": {

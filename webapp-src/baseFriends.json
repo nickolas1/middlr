@@ -1,0 +1,14 @@
+{
+    friends: [
+        {
+            name: "Nick",
+            address: "1751 Skillman Ave W Roseville MN 55113",
+            transport: "car"
+        },
+        {
+            name: "Nick2",
+            address: "2211 Fernwood St Roseville MN 55113",
+            transport: "bike"
+        }
+    ]
+}

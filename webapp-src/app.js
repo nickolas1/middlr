@@ -1,9 +1,14 @@
 // import app-level services and main views
-// import tabs                 from './tabs/main';
-// import tabTemplate          from './tabs/template.html!text';
+import map                  from './map/main';
+import mapTemplate          from './map/template.html!text';
+
+import baseFriends     from './baseFriends.json!';
+import apiKey          from './apiKey.json!';
 
 // create the result tracker app module
 const middlr = angular.module('middlr', [
+    map.name,
+    'ngMap',
     'ui.router',
     'ct.ui.router.extras.sticky',
     'ct.ui.router.extras.dsr',
@@ -13,19 +18,23 @@ const middlr = angular.module('middlr', [
     'modelFactory'
 ]);
 
-resultTracker.config(ConfigBlock);
-resultTracker.run(RunBlock);
+middlr.config(ConfigBlock);
+middlr.run(RunBlock);
 
 // configure app states and API routing
 ConfigBlock.$inject = ['$stateProvider', '$urlRouterProvider'];
 function ConfigBlock($stateProvider, $urlRouterProvider) {
     
+    $urlRouterProvider.otherwise('/');
+    
     // const getProjectList = ['ProjectModel', function(ProjectModel) {
     //     return ProjectModel.query();
     // }];
-    
-    const getFilterChoiceList = ['MetaModel', function(MetaModel) {
-        return MetaModel.getFields();
+    const getBaseFriends = [function() {
+        return baseFriends.friends;
+    }];
+    const getApiKey = [function() {
+        return apiKey.apiKey;
     }];
 
     // set up app states
@@ -35,7 +44,14 @@ function ConfigBlock($stateProvider, $urlRouterProvider) {
             url: '/',
             params: {},
             resolve: { // variables set here will be available to the state when it loads
-                baseFriends: getBaseFriends
+                friends: getBaseFriends,
+                apiKey: getApiKey
+            },
+            views: {
+                '': {
+                    template: mapTemplate,
+                    controller: 'MapCtrl as ctrl'
+                }
             }
         }
     ];
@@ -47,4 +63,4 @@ RunBlock.$inject = ['$state', '$stateParams'];
 function RunBlock($state, $stateParams) {
 }
 
-export default resultTracker;
+export default middlr;
