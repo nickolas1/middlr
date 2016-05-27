@@ -1,10 +1,17 @@
 <div class='container-fluid'>
+    <h1>middlr.</h1>
+    <h4>disrupting where we meet</h4>
     <div map-lazy-load='http://maps.google.com/maps/api/js'
         map-lazy-load-params='{{ctrl.apiUrl}}'>
         <ng-map
             center='44.9760603, -93.1814086'
             zoom='12'
             map-type-id='ROADMAP'>
+
+            <marker ng-repeat='mark in ctrl.markers track by $index'
+                position={{mark.position}}
+                title={{mark.title}}></marker>
         </ng-map>
+
     </div>
 </div>

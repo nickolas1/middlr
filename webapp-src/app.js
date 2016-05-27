@@ -24,14 +24,28 @@ middlr.run(RunBlock);
 // configure app states and API routing
 ConfigBlock.$inject = ['$stateProvider', '$urlRouterProvider'];
 function ConfigBlock($stateProvider, $urlRouterProvider) {
-    
+
     $urlRouterProvider.otherwise('/');
-    
+
     // const getProjectList = ['ProjectModel', function(ProjectModel) {
     //     return ProjectModel.query();
     // }];
-    const getBaseFriends = [function() {
-        return baseFriends.friends;
+    const getBaseFriends = ['$http', '$q', function($http, $q) {
+        //return baseFriends.friends;
+        const geocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
+        let friends = baseFriends.friends;
+        let key = apiKey.apiKey;
+        let friendsReady = friends.map(friend => $http.get(geocodeUrl, {params: {address: friend.address, key: key}}));
+        let d = $q.defer();
+        $q.all(friendsReady).then(function(responses) {
+            let friendsGeo = responses.map(function(response, idx) {
+                let result = response.data.results[0];
+                result.name = friends[idx].name;
+                return result;
+            });
+            d.resolve(friendsGeo);
+        }, function() { d.reject(); });
+        return d.promise;
     }];
     const getApiKey = [function() {
         return apiKey.apiKey;
