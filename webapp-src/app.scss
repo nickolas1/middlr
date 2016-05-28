@@ -2,9 +2,11 @@
 
 // bootstrap customization and main file
 @import './_variables.scss';
-// @import './resources/bootswatch/_variables.scss';
+@import './resources/bootswatch/_variables.scss';
 @import '../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-// @import './resources/bootswatch/_bootswatch.scss';
+@import './resources/bootswatch/_bootswatch.scss';
+
+@import './map/_map.scss';
 
 // app-wide tweaks
 html {

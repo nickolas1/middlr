@@ -41,6 +41,7 @@ function ConfigBlock($stateProvider, $urlRouterProvider) {
             let friendsGeo = responses.map(function(response, idx) {
                 let result = response.data.results[0];
                 result.name = friends[idx].name;
+                result.transport = friends[idx].transport;
                 return result;
             });
             d.resolve(friendsGeo);

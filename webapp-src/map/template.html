@@ -1,17 +1,57 @@
 <div class='container-fluid'>
     <h1>middlr.</h1>
-    <h4>disrupting where we meet</h4>
+    <h4>disrupting where we meetr up</h4>
     <div map-lazy-load='http://maps.google.com/maps/api/js'
         map-lazy-load-params='{{ctrl.apiUrl}}'>
-        <ng-map
+        <ng-map id='map'
             center='44.9760603, -93.1814086'
-            zoom='12'
+            zoom='11'
             map-type-id='ROADMAP'>
 
             <marker ng-repeat='mark in ctrl.markers track by $index'
                 position={{mark.position}}
+                icon='{path:"CIRCLE", scale: 5, strokeColor: "Fuchsia"}'
                 title={{mark.title}}></marker>
+            <marker
+                position={{ctrl.destMarker.position}}
+                title={{ctrl.destMarker.title}}></marker>
         </ng-map>
-
+<!--
+        <div class='row'>
+            <div class='col-md-8'>
+                <input type='text' class='form-control destination-input'
+                    placeholder='where should we meet?'
+                    places-auto-complete size=80
+                    ng-model='ctrl.destination'
+                    component-restrictions='{country:"us"}'
+                    on-place-changed='ctrl.destinationChange()'>
+            </div>
+            <div class='col-md-4'>
+                <uib-timepicker ng-model='ctrl.time' ng-change='ctrl.timeChange()' hour-step=1 minute-step=15 show-meridian=true show-spinners=false class='destination-input'></uib-timepicker>
+            </div>
+        </div>
+-->
+        <input type='text' class='form-control destination-input'
+                    placeholder='where should we meet?'
+                    places-auto-complete size=80
+                    ng-model='ctrl.destination'
+                    component-restrictions='{country:"us"}'
+                    on-place-changed='ctrl.destinationChange()'>
     </div>
+
+    <table st-table='ctrl.friends' class='table table-striped friends-table' ng-if='ctrl.destinationSet'>
+        <tbody>
+            <tr ng-repeat='friend in ctrl.friends'>
+                <td>{{friend.name}}</td>
+                <td>
+                    <div class='btn-group'>
+                        <label class='btn btn-primary btn-sm' ng-model='friend.transport' uib-btn-radio="'car'">car</label>
+                        <label class='btn btn-primary btn-sm' ng-model='friend.transport' uib-btn-radio="'bike'">bike</label>
+                    </div>
+                </td>
+                <td>{{friend.distance}}</td>
+                <td>{{friend.duration[friend.transport]}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
