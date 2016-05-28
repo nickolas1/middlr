@@ -6,9 +6,39 @@
             transport: "car"
         },
         {
-            name: "Nick2",
-            address: "2211 Fernwood St, Roseville, MN 55113",
+            name: "Cuong",
+            address: "2068 Temple Court, St Paul, MN 55104",
             transport: "bike"
+        },
+        {
+            name: "Ben S",
+            address: "538 Otis Avenue, St Paul, MN 55104",
+            transport: "car"
+        },
+        {
+            name: "Ben P",
+            address: "1754 Walnut St, Lauderdale, MN 55113",
+            transport: "car"
+        },
+        {
+            name: "Nico",
+            address: "2390 Carter Ave, Saint Paul, MN 55108",
+            transport: "car"
+        },
+        {
+            name: "Bill",
+            address: "2322 Gorden Ave, St Paul, MN 55104",
+            transport: "car"
+        },
+        {
+            name: "Eli",
+            address: "705 Cherokee Ave, St Paul, MN 55107",
+            transport: "car"
+        },
+        {
+            name: "Jake",
+            address: "1172 Ryan Ave W, Roseville, MN 55113",
+            transport: "car"
         }
     ]
 }
